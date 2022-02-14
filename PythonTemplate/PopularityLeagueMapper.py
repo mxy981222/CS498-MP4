@@ -3,18 +3,23 @@ import sys
 
 
 leaguePath = sys.argv[1]
-#TODO
+league = []
+pages = {}
 
 
 with open(leaguePath) as f:
-	#TODO
+    tmp = f.readline()
+    while tmp:
+        league.append(tmp.strip())
+        tmp = f.readline()
 
-
-
-
+f.close()
 
 for line in sys.stdin:
+    line = line.strip()
+    page, count = line.split("\t",1)
+    pages[page] = int(count)
 
-       #TODO
-
-       # print('%s\t%s' % (  ,  )) pass this output to reducer
+for page in league:
+    if page in pages:
+        print("%s\t%s" %(page,pages[page]))
