@@ -11,7 +11,8 @@ for line in sys.stdin:
     dest = int(dest)
     pages.add(src)
     pages.add(dest)
-    dests.add(dest)
+    if src != dest:
+        dests.add(dest)
 
 orphans = list(pages-dests)
 orphans.sort()
